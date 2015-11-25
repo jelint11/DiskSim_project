@@ -1,0 +1,22 @@
+--- disksim-4.0.zal/dixtrac/Makefile	2015-11-20 21:03:18.928548713 +0100
++++ disksim-4.0/dixtrac/Makefile	2015-11-24 10:47:17.019203574 +0100
+@@ -53,7 +53,7 @@
+ ST_LDFLAGS = -L$(STHREADS) -lst
+ ST_CFLAGS = -I$(ST_DIR)/obj
+ 
+-LDFLAGS  = -L. -lm -l$(LIBNAME) -ldxtools \
++LDFLAGS = -L. -l$(LIBNAME) -ldxtools -lm\
+ 	$(LIBDISKSIM_LDFLAGS) \
+ 	$(MEMSMODEL_LDFLAGS) \
+ 	$(DISKMODEL_LDFLAGS) \
+--- disksim-4.0.zal/libparam/libparam.y	2008-05-16 23:04:35.000000000 +0200
++++ disksim-4.0/libparam/libparam.y	2015-11-25 10:12:18.280052240 +0100
+@@ -38,7 +38,7 @@
+ 
+ #define YYERROR_VERBOSE
+ 
+-void yyerror (char *s) {
++void yyerror (const char *s) {
+   fprintf(stderr, "*** error: on line %d of %s: ", lp_lineno, lp_filename);
+   fprintf(stderr, "%s\n", s);
+ }
